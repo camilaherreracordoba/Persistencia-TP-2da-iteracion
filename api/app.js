@@ -7,6 +7,7 @@ var carrerasRouter = require('./routes/carreras');
 var materiasRouter = require('./routes/materias');
 var profesoresRouter = require('./routes/profesores');
 var alumnosRouter = require('./routes/alumnos');
+var aulasRouter = require('./routes/aula')
 var app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use('/car', carrerasRouter);
 app.use('/mat', materiasRouter);
 app.use('/pro', profesoresRouter);
 app.use('/alu', alumnosRouter);
+app.use('/aula', aulasRouter); 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -53,6 +53,23 @@ router.get("/:id", (req, res) => {
   });
 });
 
+const filtarPorCarrera = (id_carrera, { onSuccess, onNotFound, onError }) => {
+  models.alumno
+    .findAll({
+      attributes: ["id", "nombre", "id_carrera"],
+      where: { id_carrera }
+    })
+    .then(alumno => (alumno ? onSuccess(alumno) : onNotFound()))
+    .catch(() => onError());
+};
+
+router.get("/carrera/:id_carrera", (req, res) => {
+  filtarPorCarrera(req.params.id_carrera, {
+    onSuccess: alumno => res.send(alumno),
+    onNotFound: () => res.sendStatus(404),
+    onError: () => res.sendStatus(500)
+  });
+});
 router.put("/:id", (req, res) => {
   const onSuccess = alumno =>
     alumno

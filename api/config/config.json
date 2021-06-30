@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "",
-    "database": "api_v2",
+    "database": "api_v1",
     "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
